@@ -1,0 +1,73 @@
+@use "shared";
+
+.queen {
+  margin-top: 5rem;
+  margin-bottom: 7rem;
+
+  & > * {
+    color: var(--color-grey-light-1);
+  }
+
+  &-video {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1; /* Lower z-index */
+  }
+
+  &-video video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1; /* Ensure the video is behind all elements */
+  }
+
+  &-video video.active {
+    display: block; /* Show the currently active video */
+
+    @include shared.respond(bp-medium) {
+      display: none;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    margin-left: 2rem;
+    margin-top: 40%;
+    z-index: 10; /* Ensure this is above the video */
+
+    @include shared.respond(bp-largest) {
+      margin-top: 50%;
+    }
+
+    @include shared.respond(bp-medium) {
+      margin-top: 65%;
+    }
+
+    @include shared.respond(bp-smallest) {
+      margin-top: 115%;
+    }
+
+    &-p {
+      font-size: 2rem;
+      padding-right: 40%;
+      margin-bottom: 2rem;
+
+      @include shared.respond(bp-smallest) {
+        padding-right: 0%;
+      }
+    }
+  }
+
+  &__btn {
+    margin-right: 2rem;
+    &-text {
+      color: #fff;
+    }
+  }
+}

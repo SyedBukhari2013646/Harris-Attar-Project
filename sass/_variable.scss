@@ -1,0 +1,64 @@
+@use "shared";
+
+:root {
+  /* 
+Inspired by the John Deere website's design principles, known for its effective use of color, clean layout, and user-centric navigation. 
+The aim was to replicate a similar professional and trustworthy aesthetic, ensuring an intuitive user experience. 
+*/
+
+  //primary-colors
+  --color-primary: #d4af37;
+
+  --color-primary-light-1: #e1c773;
+  --color-primary-light-2: #f6efd7;
+  --color-primary-light-3: #fbf7eb;
+
+  --color-primary-dark-1: #947a27;
+  --color-primary-dark-2: #2a230b;
+
+  //secondary-colors
+  --color-secondary: #ffde00;
+
+  --color-secondary-light: #fff8cc;
+
+  --color-secondary-dark: #191600;
+
+  /* 
+I used grey as a neutral color to create a balanced and modern look. 
+It complements the primary color scheme (John Deere green) without overpowering it, 
+providing a clean and professional appearance that enhances readability and user focus. 
+*/
+
+  // grey-colors
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #e4e1e1;
+  --color-grey-light-4: #ccc;
+
+  --color-grey-dark-0: #2d2d2d;
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+
+  //box-shadows
+  --box-shadow-dark-1: 0 2rem 4rem rgba(0, 0, 0, 0.3);
+  --box-shadow-light-1: 0 1rem 5rem rgb(0, 0, 0, 0.02);
+
+  /* As it is not a very luxuary website so for this we used Tnter ans sans-serif as a font-family */
+  //font-families
+  --font-primary: "Playfair Display", sans-serif;
+}
+
+//////////////////////////////
+//////////queries/////////////
+//////////////////////////////
+
+//$bp-largest:1000px => 62.5em//
+
+//$bp-large: 900px => 56.25em//
+
+//$bp-medium: 750px => 46.875em//
+
+//$bp-small: 560px => 35em//
+
+//$bp-smallest: 430px => 26.875em//

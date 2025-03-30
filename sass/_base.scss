@@ -1,0 +1,27 @@
+@use "shared";
+
+* {
+  //universal styling
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; //1rem = 10px, 10px/16px = 62.5%
+
+  @include shared.respond(bp-medium) {
+    font-size: 50.5%; //1rem = 10px, 10px/16px = 62.5%
+  }
+}
+
+// .container {
+//   display: grid;
+//   grid-template-rows: max-content max-content max-content max-content max-content max-content;
+// }

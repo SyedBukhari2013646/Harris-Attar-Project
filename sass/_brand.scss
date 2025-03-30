@@ -1,0 +1,52 @@
+@use "shared";
+
+.brands {
+  &__heading {
+    margin: 2rem;
+    font-size: 3.4rem;
+  }
+
+  &__ittar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 2rem;
+    gap: 1rem;
+
+    @include shared.respond(bp-small) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__ittar-1,
+  &__ittar-2 {
+    &-img {
+      object-fit: cover; /* Cover the container */
+      height: 90vh;
+      width: 100%;
+      background-position: center;
+    }
+  }
+
+  &__heading-name-1 {
+    margin-top: 1rem;
+    font-weight: 200;
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+  }
+
+  &__p {
+    margin-top: 1rem;
+    color: var(--color-grey-dark-2);
+    margin-bottom: 1rem;
+  }
+
+  &__btn {
+    @include shared.respond(bp-small) {
+      margin-bottom: 2rem;
+    }
+
+    &::after {
+      background-color: black;
+    }
+  }
+}

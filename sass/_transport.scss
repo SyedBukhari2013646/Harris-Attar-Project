@@ -1,0 +1,39 @@
+@use "shared";
+
+.transport {
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+
+  @include shared.respond(bp-large) {
+    display: block;
+  }
+
+  &__container {
+    text-align: center;
+  }
+  &__box {
+    overflow: hidden;
+    margin-bottom: 3.5rem;
+
+    @include shared.respond(bp-large) {
+      margin-top: 2.5rem;
+    }
+    &-img {
+      width: 100%;
+      height: 70vh;
+      display: block;
+      transition: all 0.2s;
+      transform-origin: center;
+
+      @include shared.respond(bp-large) {
+        height: 100vh;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}

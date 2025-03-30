@@ -1,0 +1,129 @@
+@use "shared";
+
+.menu {
+  box-shadow: 0.5rem 0.2rem rgba(#000000, 0.1);
+  display: grid;
+  grid-template-rows: 4rem 12rem;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10000;
+
+  min-width: 100%;
+
+  &__item {
+    color: #fff;
+    background-color: black;
+    font-size: 1.3rem;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    justify-items: center;
+    justify-content: space-between;
+    min-width: 100vw;
+
+    @include shared.respond(bp-largest) {
+      grid-template-columns: 5% 90% 5%;
+    }
+
+    &-globe {
+      display: flex;
+      justify-self: flex-start;
+      margin-left: 1rem;
+      align-items: center;
+      gap: 0.5rem;
+
+      @include shared.respond(bp-largest) {
+        display: none;
+      }
+    }
+
+    &-apps {
+      display: flex;
+      justify-self: flex-end;
+      margin-right: 3rem;
+      gap: 1.5rem;
+      font-size: 1.7rem;
+
+      @include shared.respond(bp-largest) {
+        display: none;
+      }
+    }
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: relative;
+
+    background-color: #fff;
+
+    min-width: 100vw;
+
+    &-img {
+      height: 8rem;
+      position: absolute; /* Set the element to absolute */
+      top: 50%; /* Move down to the middle */
+      left: 50%; /* Move to the middle */
+      transform: translate(-50%, -50%); /* Adjust back to truly center */
+    }
+
+    &-links {
+      display: flex;
+      gap: 2rem;
+
+      @include shared.respond(bp-large) {
+        display: none;
+      }
+
+      & > * {
+        text-decoration: none;
+        color: var(--color-grey-dark-0);
+        font-size: 1.7rem;
+
+        transition: all 0.3s;
+
+        &:hover {
+          color: var(--color-grey-dark-3);
+        }
+      }
+
+      &-before {
+        margin-left: 2rem;
+      }
+
+      &-after {
+        margin-right: 2rem;
+      }
+    }
+  }
+}
+
+////////////////////////////////////////////
+/////////////////bp-large-icons////////////
+///////////////////////////////////////////
+
+.bp-large-icons {
+  display: none;
+
+  @include shared.respond(bp-large) {
+    display: block;
+    font-size: 2.5rem;
+    margin-right: 2rem;
+
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    column-gap: 1rem;
+
+    & > * {
+      transition: all 0.3s;
+      &:hover {
+        color: var(--color-grey-light-3);
+      }
+    }
+  }
+}

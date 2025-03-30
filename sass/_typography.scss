@@ -1,0 +1,261 @@
+@use "shared";
+
+.h1 {
+  font-size: 8rem;
+}
+
+.h2 {
+  font-size: 7rem;
+  font-weight: 500;
+}
+
+.h3 {
+  font-size: 3.4rem;
+  font-weight: 200;
+}
+
+.p {
+  font-size: 1.7rem;
+}
+
+///////////////////////////////
+///////////button//////////////
+///////////////////////////////
+
+.btn {
+  position: relative;
+  font-size: 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px; /* Thickness of the border */
+  background: #fff; /* Color of the border */
+  transition: transform 0.5s ease; /* Smooth transition */
+}
+
+.btn:hover::after {
+  transform: translateX(-100%); /* Move the border to the left */
+}
+
+.original-text {
+  display: inline-block; /* Allows transformation */
+  transition: transform 0.5s ease; /* Smooth transition */
+}
+
+.btn:hover .original-text {
+  transform: translateY(-30px); /* Move text up */
+}
+
+.new-text {
+  position: absolute;
+  bottom: -20px; /* Start below the button */
+  left: 0;
+  transition: transform 0.5s ease; /* Smooth transition */
+}
+
+.btn:hover .new-text {
+  transform: translateY(-30px); /* Move text into position */
+}
+
+////////////////////////////////////////////////
+////////////////////fixed///////////////////////
+////////////////////////////////////////////////
+
+.fixed__btn {
+  position: fixed;
+  color: var(--color-grey-light-1);
+  bottom: 3rem;
+  right: 2rem;
+  z-index: 1000;
+  font-size: 2rem;
+  padding: 2rem 4rem;
+  border-radius: 2rem;
+  background-color: black;
+  transition: all 0.3s;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &:hover {
+    background-color: grey;
+    cursor: pointer;
+  }
+}
+
+////////////////////////////////////////////////
+///////////////////navigation///////////////////
+////////////////////////////////////////////////
+
+.navigation {
+  // Hide the checkbox
+  &__checkbox {
+    display: none;
+  }
+
+  // Button styles
+  &__button {
+    display: none;
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    border-radius: 50%;
+    z-index: 2000;
+    text-align: center;
+    cursor: pointer;
+
+    @include shared.respond(bp-large) {
+      display: block;
+    }
+
+    @include shared.respond(bp-medium) {
+    }
+
+    @include shared.respond(bp-small) {
+    }
+  }
+
+  // Background styles
+  &__background {
+    display: none;
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+
+    @include shared.respond(bp-large) {
+      display: block;
+    }
+
+    @include shared.respond(bp-medium) {
+    }
+
+    @include shared.respond(bp-small) {
+    }
+  }
+
+  // Navigation menu styles
+  &__nav {
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1500;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    @include shared.respond(bp-small) {
+      width: 100vw;
+    }
+  }
+
+  // Navigation link styles
+  &__link {
+    &:link,
+    &:visited {
+      display: inline-block;
+      font-size: 3rem;
+      font-weight: 300;
+      padding: 1rem 2rem;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      background-image: linear-gradient(
+        120deg,
+        transparent 0%,
+        transparent 50%,
+        #fff 50%
+      );
+      background-size: 220%;
+      transition: all 0.4s;
+
+      span {
+        margin-right: 1.5rem;
+        display: inline-block;
+      }
+    }
+
+    &:hover,
+    &:active {
+      background-position: 100%;
+      color: var(--color-primary);
+      transform: translateX(1rem);
+    }
+  }
+
+  // Functionality when checkbox is checked
+  &__checkbox:checked ~ &__background {
+    transform: scale(80);
+  }
+
+  &__checkbox:checked ~ &__nav {
+    opacity: 1;
+    width: 100vw;
+  }
+
+  // Icon styles
+  &__icon {
+    position: relative;
+
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 2px;
+      background-color: var(--color-grey-dark-1);
+      display: inline-block;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all 0.2s;
+    }
+
+    &::before {
+      top: -0.8rem;
+    }
+    &::after {
+      top: 0.8rem;
+    }
+  }
+
+  &__button:hover &__icon::before {
+    top: -0.8rem;
+  }
+
+  &__button:hover &__icon::after {
+    top: 0.8rem;
+  }
+
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+
+  &__checkbox:checked + &__button &__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+  }
+}
